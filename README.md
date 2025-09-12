@@ -1,2 +1,2 @@
 # GSP-Calculator
-Um Aplicativo de calculadora feio utilizando SwiftUi.
+Um App de calculadora criado na linguagem Swift ultilizando o FrameWork SwiftUI.
