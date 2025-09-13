@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct buttonsView: View {
-    @Binding public var result: Float
+@Binding public var result: Float
 @Binding  var num1: String
 @Binding  var num2: String
 @Binding  public var isSelect: Bool
-    @Binding public var optionSelected: String
-    @State private var showResultView = false
+@Binding public var optionSelected: String
+@Binding public var isResulting: Bool
+@State private var showResultView = false
     
     var body: some View {
         
@@ -28,6 +29,7 @@ struct buttonsView: View {
                         optionSelected = ""
                         isSelect = false
                         result = 0.0
+                        isResulting = false
                         
                     } label: {
                         ZStack{
@@ -53,8 +55,10 @@ struct buttonsView: View {
                         }                }
                     
                     Button {
-                        optionSelected = "%"
-                        isSelect = true
+                        if(num1 != "" && result == 0.0){
+                            optionSelected = "%"
+                            isSelect = true
+                        }
                     } label: {
                         ZStack{
                             Circle()
@@ -66,8 +70,10 @@ struct buttonsView: View {
                         }
                     }
                     Button {
-                        optionSelected = "÷"
-                        isSelect = true
+                        if(num1 != "" && result == 0.0){
+                            optionSelected = "÷"
+                            isSelect = true
+                        }
                     } label: {
                         ZStack{
                             Circle()
@@ -131,14 +137,16 @@ struct buttonsView: View {
                         
                     }
                     Button {
-                        optionSelected = "X"
-                        isSelect = true
+                        if(num1 != "" && result == 0.0){
+                            optionSelected = "X"
+                            isSelect = true
+                        }
                     } label: {
                         ZStack{
                             Circle()
                                 .fill(Color.yellow)
                                 .frame(width: 80,height: 80)
-                            Text("X")
+                            Text("x")
                                 .font(.title)
                             
                         }
@@ -198,8 +206,10 @@ struct buttonsView: View {
                         
                     }
                     Button {
-                        optionSelected = "-"
-                        isSelect = true
+                        if(num1 != "" && result == 0.0){
+                            optionSelected = "-"
+                            isSelect = true
+                        }
                     } label: {
                         ZStack{
                             Circle()
@@ -264,8 +274,10 @@ struct buttonsView: View {
                         
                     }
                     Button {
-                        optionSelected = "+"
-                        isSelect = true
+                        if(num1 != "" && result == 0.0){
+                            optionSelected = "+"
+                            isSelect = true
+                        }
                     } label: {
                         ZStack{
                             Circle()
@@ -311,7 +323,7 @@ struct buttonsView: View {
                     Button {
                         if(isSelect == true && result == 0.0){
                             num2 += ","
-                        }else if(result == 0.0){
+                        }else if(result == 0.0 && num1 != ""){
                             num1 += ","
                         }
                     } label: {
@@ -328,6 +340,7 @@ struct buttonsView: View {
                     Button {
                         calculate()
                         showResultView = true
+                        isResulting = true
                     } label: {
                         ZStack{
                             Circle()

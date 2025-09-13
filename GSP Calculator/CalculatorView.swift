@@ -13,6 +13,7 @@ struct CalculatorView: View {
     @State private var result: Float = 0.0
     @State private var isSelected: Bool = false
     @State private var optionSelected: String = ""
+    @State private var isResult: Bool = false
     var body: some View {
         ZStack(){
             Color.black.ignoresSafeArea()
@@ -35,7 +36,7 @@ struct CalculatorView: View {
                         Text("0")
                             .foregroundStyle(.white)
                             .font(.system(size: 50, weight: .bold))
-                    }else if isSelected == true && result == 0.0{
+                    }else if isSelected == true && result == 0.0 && isResult == false{
                         VStack{
                             Text("\(num1) \(optionSelected) ")
                                 .foregroundStyle(.gray)
@@ -46,7 +47,7 @@ struct CalculatorView: View {
                         }
                     }
                     
-                    if result != 0.0{
+                    if (num1 != "" && num2 != "" && isSelected == true && isResult == true) {
                         VStack{
                             Text("\(num1) \(optionSelected) \(num2) ")
                                 .foregroundStyle(.gray)
@@ -64,7 +65,7 @@ struct CalculatorView: View {
                 
                 
                 
-                buttonsView(result: $result, num1: $num1, num2: $num2, isSelect: $isSelected, optionSelected: $optionSelected)
+                buttonsView(result: $result, num1: $num1, num2: $num2, isSelect: $isSelected, optionSelected: $optionSelected, isResulting: $isResult)
                     .frame(maxWidth: .infinity, alignment: .bottom)
                     
             }
