@@ -14,6 +14,7 @@ struct CalculatorView: View {
     @State private var isSelected: Bool = false
     @State private var optionSelected: String = ""
     @State private var isResult: Bool = false
+
     var body: some View {
         ZStack(){
             Color.black.ignoresSafeArea()

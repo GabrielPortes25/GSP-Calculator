@@ -15,6 +15,7 @@ struct buttonsView: View {
 @Binding public var optionSelected: String
 @Binding public var isResulting: Bool
 @State private var showResultView = false
+
     
     var body: some View {
         
